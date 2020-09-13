@@ -2,7 +2,7 @@
  * @Author: mazhuang
  * @Date: 2020-09-13 13:27:17
  * @LastEditors: mazhuang
- * @LastEditTime: 2020-09-13 14:27:58
+ * @LastEditTime: 2020-09-13 14:40:03
  * @FilePath: /algorithm/leetcode/79_seachWord.go
  * @Description:
  */
@@ -10,43 +10,38 @@ package leetcode
 
 func exist(board [][]byte, word string) bool {
 
-	m := len(board)
+	m, n := len(board), len(board[0])
 	if m == 0 {
 		return false
 	}
-	n := len(board[0])
 	directions := [][]int{
 		{0, -1}, // 向上搜素
 		{-1, 0}, // 向左搜索
 		{0, 1},  // 向下搜索
 		{1, 0},  // 向右搜索
 	}
-	var marked [][]bool
-	for i := 0; i < m; i++ {
-		var mark []bool
-		for j := 0; j < n; j++ {
-			mark = append(mark, false)
-		}
-		marked = append(marked, mark)
+	var marked = make([][]bool, m)
+	for i := range marked {
+		marked[i] = make([]bool, n)
 	}
 	var dfs func(cur, x, y int) bool
 	dfs = func(cur, x, y int) bool {
-		if cur == len(word)-1 {
-			return board[x][y] == word[cur]
+		if board[x][y] != word[cur] {
+			return false
 		}
-		if board[x][y] == word[cur] {
-			marked[x][y] = true
+		if cur == len(word)-1 {
+			return true
+		}
+		marked[x][y] = true
+		defer func() { marked[x][y] = false }() // 回溯自动调用
 
-			for _, dir := range directions {
-				nx := x + dir[0]
-				ny := y + dir[1]
-				if nx >= 0 && nx < m && ny < n && ny >= 0 &&
-					!marked[nx][ny] &&
-					dfs(cur+1, nx, ny) {
-					return true
-				}
+		for _, dir := range directions {
+			nx, ny := x+dir[0], y+dir[1]
+			if 0 <= nx && nx < m && 0 <= ny && ny < n &&
+				!marked[nx][ny] &&
+				dfs(cur+1, nx, ny) {
+				return true
 			}
-			marked[x][y] = false
 		}
 		return false
 	}
@@ -58,6 +53,5 @@ func exist(board [][]byte, word string) bool {
 			}
 		}
 	}
-
 	return false
 }
