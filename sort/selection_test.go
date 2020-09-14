@@ -1,7 +1,7 @@
 /**************************************
  * @Author: mazhuang
  * @Date: 2020-09-11 16:05:37
- * @LastEditTime: 2020-09-11 18:16:27
+ * @LastEditTime: 2020-09-14 10:15:26
  * @Description:
  **************************************/
 package sort
@@ -21,11 +21,7 @@ func TestSelection(t *testing.T) {
 		want []int
 	}{
 		// TODO: Add test cases.
-		struct {
-			name string
-			args args
-			want []int
-		}{
+		{
 			name: "1",
 			args: args{
 				a: []int{3, 6, 1, 5, 8, 2, 4, 9, 0, 7},

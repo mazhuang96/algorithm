@@ -1,7 +1,7 @@
 /**************************************
  * @Author: mazhuang
  * @Date: 2020-09-11 10:57:56
- * @LastEditTime: 2020-09-11 17:05:00
+ * @LastEditTime: 2020-09-14 10:13:30
  * @Description:
  **************************************/
 package leetcode
@@ -25,13 +25,13 @@ func Test_combinationSum3(t *testing.T) {
 
 	tests := []test{
 		// TODO: Add test cases.
-		test{
+		{
 			name: "first",
 			args: args{
 				k: 3,
 				n: 9,
 			},
-			want: [][]int{[]int{1, 2, 6}, []int{1, 3, 5}, []int{2, 3, 4}},
+			want: [][]int{{1, 2, 6}, {1, 3, 5}, {2, 3, 4}},
 		},
 	}
 	for _, tt := range tests {
