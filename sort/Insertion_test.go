@@ -1,7 +1,7 @@
 /**************************************
  * @Author: mazhuang
  * @Date: 2020-09-11 17:10:14
- * @LastEditTime: 2020-09-11 18:51:49
+ * @LastEditTime: 2020-09-14 10:15:10
  * @Description: 插入排序
  **************************************/
 package sort
@@ -21,11 +21,7 @@ func TestInsertion(t *testing.T) {
 		want []int
 	}{
 		// TODO: Add test cases.
-		struct {
-			name string
-			args args
-			want []int
-		}{
+		{
 			name: "1",
 			args: args{
 				a: []int{3, 6, 1, 5, 8, 2, 4, 9, 0, 7},

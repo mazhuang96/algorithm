@@ -1,7 +1,7 @@
 /**************************************
  * @Author: mazhuang
  * @Date: 2020-09-11 16:05:37
- * @LastEditTime: 2020-09-11 18:22:30
+ * @LastEditTime: 2020-09-14 14:30:55
  * @Description: 选择排序
  **************************************/
 package sort
@@ -17,8 +17,8 @@ func Selection(a []int) []int {
 			if a[min] > a[j] {
 				min = j
 			}
-			// 最小值和a[i] 交换
 		}
+		// 最小值和a[i] 交换
 		a[min], a[i] = a[i], a[min]
 		fmt.Printf("%v times: %v\n", i, a)
 	}

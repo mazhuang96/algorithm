@@ -1,2 +1,3 @@
 # algorithm
+
 Algorithm exercise
